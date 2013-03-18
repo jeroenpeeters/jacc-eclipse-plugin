@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jacc Eclipse Plugin
+Bundle-SymbolicName: JaccEclipsePlugin; singleton:=true
+Bundle-Version: 1.0.2
+Bundle-Activator: nl.jeroenpeeters.eclipse.plugin.jacc.Activator
+Bundle-Vendor: jeroenpeeters.nl
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.console;bundle-version="3.5.100",
+ org.eclipse.ui.editors;bundle-version="3.8.0",
+ org.eclipse.jface.text;bundle-version="3.8.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/jacc/jacc.jar,
+ .

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="jaccBuilder"
+         name="Jacc Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="nl.jeroenpeeters.eclipse.plugin.jacc.JaccBuilder">
+         </run>
+      </builder>
+   </extension>
+   
+   <extension
+         id="jaccNature"
+         name="Jacc Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="nl.jeroenpeeters.eclipse.plugin.jacc.JaccNature">
+         </run>
+      </runtime>
+      <builder
+            id="JaccEclipsePlugin.jaccBuilder">
+      </builder>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="JaccEclipsePlugin.contribution">
+         
+         <menu
+         	id="JaccEclipsePlugin.subMenu"
+         	label="Configure"
+         	path="additions">
+      		<separator name="group1"/>
+     	 </menu>
+         <action
+               label="Convert to JACC Project"
+               class="nl.jeroenpeeters.eclipse.plugin.jacc.ConvertToJaccNatureAction"
+               enablesFor="+"
+               menubarPath="JaccEclipsePlugin.subMenu/group1" 
+               id="JaccEclipsePlugin.addRemoveNatureAction">
+               <visibleWhen checkEnabled="false" />
+         </action>
+      </objectContribution>
+   </extension>
+   
+   <extension
+         id="jaccProblem"
+         name="JACC Problems"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="jacc Editor"
+            extensions="jacc"
+            icon="icons/script.png"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="testeditor.editors.JaccEditor"
+            id="testeditor.editors.JaccEditor">
+      </editor>
+   </extension>
+
+</plugin>
